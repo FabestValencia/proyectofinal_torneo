@@ -10,7 +10,9 @@ public class Torneo {
     private byte limiteEdad;
     private LocalDate fechaInicio;
     private Inscripcion inscripcion;
-    
+    /*
+     * Creacion del objeto torneo
+     */
     public Torneo(String nombre, byte numeroParticipantes, boolean isLimiteEdad, byte limiteEdad, LocalDate fechaInicio,
             Inscripcion inscripcion) {
         this.nombre = nombre;
