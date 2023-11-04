@@ -22,7 +22,7 @@ public class Inscripcion {
         return fechaInicio;
     }
     /*
-     * Metodo apra cambiar fecha de inicio
+     * Metodo para cambiar fecha de inicio
      */
     public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
