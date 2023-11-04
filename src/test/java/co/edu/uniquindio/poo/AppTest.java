@@ -69,12 +69,36 @@ public class AppTest {
 
     @Test
     public void inscripcionNegativo(){
-        LOG.info("Iniciado el test de inscripcion hegativa");
+        LOG.info("Iniciado el test de inscripcion negativa");
 
         assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
                 LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, (byte) -1));
 
         LOG.info("Finalizado el test de inscripcion negativa");
     }
+
+    @Test
+    public void inscripcionTardia(){
+        LOG.info("Iniciado el test de inscripcion tardia");
+
+        assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 11, 1),
+                LocalDate.of(2023, 11, 15), (byte) 24, (byte) 0, (byte) 0));
+
+        LOG.info("Finalizado el test de inscripcion tardia");
+
+    }
+
+    @Test
+    public void cierreInscripcionesAnteriorInicio(){
+        LOG.info("Iniciado el test de cierre inscripciones anterior inicio");
+
+        assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 15),
+                LocalDate.of(2023, 8, 1), (byte) 24, (byte) 0, (byte) 0));
+
+        LOG.info("Finalizado el test de cierre inscripciones anterior inicio");
+
+    }
+
+
 
 }
