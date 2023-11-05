@@ -10,21 +10,23 @@ public class Torneo{
         private LocalDate fechaCierreInscripciones;
         private final byte numeroParticipantes;
         private final byte limiteEdad;
-        private final byte valorInscripcion;
+        private final int valorInscripcion;
 
         
 
         public Torneo(String nombre, LocalDate fechaInicio, LocalDate fechaInicioInscripciones,
                         LocalDate fechaCierreInscripciones, byte numeroParticipantes, byte limiteEdad,
-                        byte valorInscripcion) {
+                        int valorInscripcion) {
 
                 assert nombre != null;
-                assert fechaInicio != null;
-                assert fechaInicioInscripciones != null;
+
+                setFechaInicio(fechaInicio);
+                setFechaInicioInscripciones(fechaInicioInscripciones);
+
                 assert fechaCierreInscripciones != null;
                 assert numeroParticipantes >= (byte) 0;
                 assert limiteEdad >= (byte)0;
-                assert valorInscripcion >= (byte)0;
+                assert valorInscripcion >= 0;
                 assert fechaInicio.isAfter(fechaInicioInscripciones) && fechaInicio.isAfter(fechaCierreInscripciones);
                 assert fechaCierreInscripciones.isAfter(fechaInicioInscripciones);
                 
@@ -63,15 +65,21 @@ public class Torneo{
                 return limiteEdad;
         }
 
-        public byte getValorInscripcion() {
+        public int getValorInscripcion() {
                 return valorInscripcion;
         }
 
         public void setFechaInicio(LocalDate fechaInicio) {
+                assert fechaInicio != null;
+                assert (fechaInicioInscripciones == null || fechaInicio.isAfter(fechaInicioInscripciones))&&
+                (fechaCierreInscripciones == null || fechaInicio.isAfter(fechaCierreInscripciones));
+                
                 this.fechaInicio = fechaInicio;
         }
 
         public void setFechaInicioInscripciones(LocalDate fechaInicioInscripciones) {
+                assert fechaInicioInscripciones != null;
+
                 this.fechaInicioInscripciones = fechaInicioInscripciones;
         }
 
