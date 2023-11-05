@@ -11,12 +11,11 @@ public class Torneo{
         private final byte numeroParticipantes;
         private final byte limiteEdad;
         private final int valorInscripcion;
-
-        
+        private final TipoTorneo tipoTorneo;
 
         public Torneo(String nombre, LocalDate fechaInicio, LocalDate fechaInicioInscripciones,
                         LocalDate fechaCierreInscripciones, byte numeroParticipantes, byte limiteEdad,
-                        int valorInscripcion) {
+                        int valorInscripcion, TipoTorneo tipoTorneo) {
 
                 assert nombre != null;
 
@@ -38,9 +37,11 @@ public class Torneo{
                 this.numeroParticipantes = numeroParticipantes;
                 this.limiteEdad = limiteEdad;
                 this.valorInscripcion = valorInscripcion;
+                this.tipoTorneo = tipoTorneo;
         }
 
 
+        
         public String getNombre() {
                 return nombre;
         }
@@ -85,6 +86,10 @@ public class Torneo{
 
         public void setFechaCierreInscripciones(LocalDate fechaCierreInscripciones) {
                 this.fechaCierreInscripciones = fechaCierreInscripciones;
+        }
+
+        public TipoTorneo getTipoTorneo() {
+                return tipoTorneo;
         }
         
 }

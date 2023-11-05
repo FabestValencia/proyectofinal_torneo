@@ -14,7 +14,7 @@ public class TestModificarFechas {
     public void modificarFechaInicio(){
         LOG.info("Iniciado el test de modificar fecha de inicio");
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0);
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL);
 
         torneo.setFechaInicio(LocalDate.of(2023, 10, 12));
 
@@ -28,7 +28,7 @@ public class TestModificarFechas {
         LOG.info("Iniciado el test de modificar fecha nulo");
 
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0);
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL);
 
         assertThrows(Throwable.class, ()-> torneo.setFechaInicio(null));
         
@@ -40,7 +40,7 @@ public class TestModificarFechas {
         LOG.info("Iniciado el test de modificar fecha inicio anterior a inscripciones");
 
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0);
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL);
 
         assertThrows(Throwable.class, ()-> torneo.setFechaInicio(LocalDate.of(2023, 7, 1)));
 
@@ -52,7 +52,7 @@ public class TestModificarFechas {
         LOG.info("Iniciado el test de modificar fecha de inicio de inscripciones");
         
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0);
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL);
 
         torneo.setFechaInicioInscripciones(LocalDate.of(2023, 8, 10));
 
@@ -66,7 +66,7 @@ public class TestModificarFechas {
         LOG.info("Iniciado el test de modificar fecha de incripciones con nulo");
 
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0);
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL);
 
         assertThrows(Throwable.class, ()-> torneo.setFechaInicioInscripciones(null));
         

@@ -24,7 +24,7 @@ public class AppTest {
     public void datosCompletos() {
         LOG.info("Iniciado el test de datos completos");
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0);
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL);
 
         assertEquals("Copa del mundo", torneo.getNombre());
         assertEquals(LocalDate.of(2023, 10, 1), torneo.getFechaInicio());
@@ -41,7 +41,7 @@ public class AppTest {
     public void datosNulos(){
         LOG.info("Iniciado el test de datos nulos");
 
-        assertThrows(Throwable.class, () -> new Torneo(null,null,null,null,(byte)24,(byte)0,0));
+        assertThrows(Throwable.class, () -> new Torneo(null,null,null,null,(byte)24,(byte)0,0,TipoTorneo.LOCAL));
 
 
         LOG.info("Finalizado el test de datos nulos");
@@ -52,7 +52,7 @@ public class AppTest {
         LOG.info("Iniciado el test de participantes negativos");
 
         assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) -24, (byte) 0, 0));
+                LocalDate.of(2023, 9, 15), (byte) -24, (byte) 0, 0, TipoTorneo.LOCAL));
 
         LOG.info("Finalizado el test de datos participantes negativos");
     }
@@ -62,7 +62,7 @@ public class AppTest {
         LOG.info("Iniciado el test de limite de edad negativo");
 
         assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) -1, 0));
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) -1, 0, TipoTorneo.LOCAL));
 
         LOG.info("Finalizado el test de limite de edad negativo");
     }
@@ -72,7 +72,7 @@ public class AppTest {
         LOG.info("Iniciado el test de inscripcion negativa");
 
         assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1),
-                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0,  -1));
+                LocalDate.of(2023, 9, 15), (byte) 24, (byte) 0,  -1, TipoTorneo.LOCAL));
 
         LOG.info("Finalizado el test de inscripcion negativa");
     }
@@ -82,7 +82,7 @@ public class AppTest {
         LOG.info("Iniciado el test de inscripcion tardia");
 
         assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 11, 1),
-                LocalDate.of(2023, 11, 15), (byte) 24, (byte) 0, 0));
+                LocalDate.of(2023, 11, 15), (byte) 24, (byte) 0, 0,TipoTorneo.LOCAL));
 
         LOG.info("Finalizado el test de inscripcion tardia");
 
@@ -93,7 +93,7 @@ public class AppTest {
         LOG.info("Iniciado el test de cierre inscripciones anterior inicio");
 
         assertThrows(Throwable.class, () -> new Torneo("Copa del mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 15),
-                LocalDate.of(2023, 8, 1), (byte) 24, (byte) 0, 0));
+                LocalDate.of(2023, 8, 1), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL));
 
         LOG.info("Finalizado el test de cierre inscripciones anterior inicio");
 
