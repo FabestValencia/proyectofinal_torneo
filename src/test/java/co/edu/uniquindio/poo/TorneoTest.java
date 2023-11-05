@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest {
-    private static final Logger LOG = Logger.getLogger(AppTest.class.getName());
+public class TorneoTest {
+    private static final Logger LOG = Logger.getLogger(TorneoTest.class.getName());
     /**
      * Rigorous Test :-)
      */
