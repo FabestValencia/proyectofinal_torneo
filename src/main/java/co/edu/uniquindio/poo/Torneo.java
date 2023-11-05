@@ -131,8 +131,29 @@ public class Torneo{
 
         }
 
-        private void registrarJugador(Equipo equipo, Jugador jugador) {
+        public void registrarJugador(Equipo equipo, Jugador jugador) {
+                assert !LocalDate.now().isAfter(fechaCierreInscripciones) : "No se puede registrar jugadores despues de la fecha de cierre";
+                validarLimiteEdadJugador(jugador);
+                validarJugadorExiste(jugador);
                 equipo.registrarJugador(jugador);
+        }
+
+        private void validarJugadorExiste(Jugador jugador) {
+                boolean existeJugador = buscarJugador(jugador).isPresent();
+                assert !existeJugador : "El jugador ya esta registrado";
+        }
+
+        private Optional<Jugador> buscarJugador(Jugador jugador) {
+                return equipos.stream()
+                .map(equipo -> equipo.buscarJugador(jugador))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .findAny();
+        }
+
+        private void validarLimiteEdadJugador(Jugador jugador) {
+                var edadAInicioTorneo = jugador.calcularEdad(fechaInicio);
+                assert limiteEdad == 0 || limiteEdad >= edadAInicioTorneo : "No se pueden regitrar jugadores que excedan el limite de edad del torneo";
         }
         
 }

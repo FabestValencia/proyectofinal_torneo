@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Jugador extends Persona{
 
@@ -13,6 +14,10 @@ public class Jugador extends Persona{
 
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
+    }
+
+    public byte calcularEdad(LocalDate fecha) {
+        return (byte) Period.between(fechaNacimiento, fecha).getYears();
     }
        
 }
