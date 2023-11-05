@@ -18,16 +18,16 @@ public class Torneo{
         private final int valorInscripcion;
         private final TipoTorneo tipoTorneo;
         private final Collection<Equipo> equipos;
+        private final GeneroTorneo generoTorneo;
+        private final Collection<Juez> jueces;
 
         public Torneo(String nombre, LocalDate fechaInicio, LocalDate fechaInicioInscripciones,
                         LocalDate fechaCierreInscripciones, byte numeroParticipantes, byte limiteEdad,
-                        int valorInscripcion, TipoTorneo tipoTorneo) {
+                        int valorInscripcion, TipoTorneo tipoTorneo, GeneroTorneo generoTorneo) {
 
                 assert nombre != null;
-
                 setFechaInicio(fechaInicio);
                 setFechaInicioInscripciones(fechaInicioInscripciones);
-
                 assert fechaCierreInscripciones != null;
                 assert numeroParticipantes >= (byte) 0;
                 assert limiteEdad >= (byte)0;
@@ -45,6 +45,8 @@ public class Torneo{
                 this.valorInscripcion = valorInscripcion;
                 this.tipoTorneo = tipoTorneo;
                 this.equipos = new LinkedList<>();
+                this.generoTorneo = generoTorneo;
+                this.jueces = new LinkedList<>();
         }
         
         public String getNombre() {
@@ -101,6 +103,10 @@ public class Torneo{
                 return Collections.unmodifiableCollection(equipos);
         }
 
+        public Collection<Juez> getJueces() {
+                return Collections.unmodifiableCollection(jueces);
+        }
+
         public void registrarEquipo(Equipo equipo){
                 validarEquipoExistente(equipo);
                 validarInscripcionesAbiertas();
@@ -155,5 +161,24 @@ public class Torneo{
                 var edadAInicioTorneo = jugador.calcularEdad(fechaInicio);
                 assert limiteEdad == 0 || limiteEdad >= edadAInicioTorneo : "No se pueden regitrar jugadores que excedan el limite de edad del torneo";
         }
+
+        public void registrarJuez(Juez juez){
+                assert !LocalDate.now().isAfter(fechaCierreInscripciones) : "No se puede registrar jueces despues de la fecha de cierre";
+                validarJuezExistente(juez);
+                jueces.add(juez);
+        }
+
+        private void validarJuezExistente(Juez juez) {
+                boolean existeJuez = buscarJuezPorLicencia(juez.getLicencia()).isPresent();
+                assert !existeJuez : "El juez ya esta registrado";
+        }
+
+        public Optional<Juez> buscarJuezPorLicencia(String licencia) {
+                Predicate<Juez> condicion = juez -> juez.getLicencia().equals(licencia);
+                return jueces.stream().filter(condicion).findAny();
+        }
+
+
+
         
 }

@@ -16,7 +16,7 @@ public class EquipoTest {
     public void registrarEquipo(){
         LOG.info("Iniciado el test de registro de equipo");
 
-        Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL);
+        Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL, GeneroTorneo.MIXTO);
 
         Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         Equipo equipo = new Equipo("Uniquindio", representante);
@@ -33,7 +33,7 @@ public class EquipoTest {
     public void nombreEquipoRepetido(){
         LOG.info("Iniciado el test de nombre equipo repetido");
 
-        Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL);
+        Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL, GeneroTorneo.MIXTO);
         
         Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         
@@ -55,7 +55,7 @@ public class EquipoTest {
         Torneo torneo = new Torneo("Copa del mundo", 
         LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), 
         LocalDate.now().minusDays(1), (byte)24, (byte)0, 0,
-         TipoTorneo.LOCAL);
+         TipoTorneo.LOCAL, GeneroTorneo.MIXTO);
         
         Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         
@@ -72,7 +72,7 @@ public class EquipoTest {
 
         LOG.info("Iniciado el test de inscripcion no abierta");
 
-        Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().plusDays(1), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL);
+        Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().plusDays(1), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL, GeneroTorneo.MIXTO);
         
         Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         
