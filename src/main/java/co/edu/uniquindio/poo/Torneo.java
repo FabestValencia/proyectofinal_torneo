@@ -124,5 +124,15 @@ public class Torneo{
                 Predicate<Equipo> condicion = equipo -> equipo.nombreEquipo().equals(nombreEquipo);
                 return equipos.stream().filter(condicion).findAny();
         }
+
+        public void registrarJugador(String nombreEquipo, Jugador jugador) {
+                var equipo = buscarEquipoPorNombre(nombreEquipo);
+                equipo.ifPresent((e) -> registrarJugador(e,jugador));
+
+        }
+
+        private void registrarJugador(Equipo equipo, Jugador jugador) {
+                equipo.registrarJugador(jugador);
+        }
         
 }

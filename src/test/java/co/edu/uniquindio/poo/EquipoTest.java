@@ -18,7 +18,7 @@ public class EquipoTest {
 
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL);
 
-        Representante representante = new Representante("Fabian","Valencia","fabest@gmail.com", "3210986789");
+        Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         Equipo equipo = new Equipo("Uniquindio", representante);
 
         torneo.registrarEquipo(equipo);
@@ -35,7 +35,7 @@ public class EquipoTest {
 
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL);
         
-        Representante representante = new Representante("Fabian","Valencia","fabest@gmail.com", "3210986789");
+        Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         
         Equipo equipo1 = new Equipo("Uniquindio", representante);
         Equipo equipo2 = new Equipo("Uniquindio", representante);
@@ -57,7 +57,7 @@ public class EquipoTest {
         LocalDate.now().minusDays(1), (byte)24, (byte)0, 0,
          TipoTorneo.LOCAL);
         
-        Representante representante = new Representante("Fabian","Valencia","fabest@gmail.com", "3210986789");
+        Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         
         Equipo equipo1 = new Equipo("Uniquindio", representante);
 
@@ -74,7 +74,7 @@ public class EquipoTest {
 
         Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().plusDays(1), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0, TipoTorneo.LOCAL);
         
-        Representante representante = new Representante("Fabian","Valencia","fabest@gmail.com", "3210986789");
+        Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         
         Equipo equipo1 = new Equipo("Uniquindio", representante);
 
