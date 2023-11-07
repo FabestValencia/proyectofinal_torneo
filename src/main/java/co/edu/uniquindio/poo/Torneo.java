@@ -107,6 +107,8 @@ public class Torneo{
                 return Collections.unmodifiableCollection(jueces);
         }
 
+        
+
         public void registrarEquipo(Equipo equipo){
                 validarEquipoExistente(equipo);
                 validarInscripcionesAbiertas();
@@ -176,6 +178,10 @@ public class Torneo{
         public Optional<Juez> buscarJuezPorLicencia(String licencia) {
                 Predicate<Juez> condicion = juez -> juez.getLicencia().equals(licencia);
                 return jueces.stream().filter(condicion).findAny();
+        }
+
+        public GeneroTorneo getGeneroTorneo() {
+                return generoTorneo;
         }
 
 

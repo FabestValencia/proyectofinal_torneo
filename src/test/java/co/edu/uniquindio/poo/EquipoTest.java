@@ -44,7 +44,7 @@ public class EquipoTest {
 
         assertThrows(Throwable.class, ()-> torneo.registrarEquipo(equipo2));
 
-        LOG.info("Finalizadoo el test de nombre equipo repetido");
+        LOG.info("Finalizado el test de nombre equipo repetido");
     }
 
     @Test
@@ -63,7 +63,7 @@ public class EquipoTest {
 
         assertThrows(Throwable.class, ()-> torneo.registrarEquipo(equipo1));
 
-        LOG.info("Finalizadoo el test de nombre inscripcion cerrada");
+        LOG.info("Finalizado el test de nombre inscripcion cerrada");
 
     }
 
@@ -80,7 +80,7 @@ public class EquipoTest {
 
         assertThrows(Throwable.class, ()-> torneo.registrarEquipo(equipo1));
 
-        LOG.info("Finalizadoo el test de nombre inscripcion no abierta");
+        LOG.info("Finalizado el test de nombre inscripcion no abierta");
 
     }
     
