@@ -52,10 +52,8 @@ public class EquipoTest {
 
         LOG.info("Iniciado el test de inscripcion cerrada");
 
-        Torneo torneo = new Torneo("Copa del mundo", 
-        LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), 
-        LocalDate.now().minusDays(1), (byte)24, (byte)0, 0,
-         TipoTorneo.LOCAL, GeneroTorneo.MIXTO);
+        Torneo torneo = new Torneo("Copa del mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), 
+        LocalDate.now().minusDays(1), (byte)24, (byte)0, 0, TipoTorneo.LOCAL, GeneroTorneo.MIXTO);
         
         Persona representante = new Persona("Fabian","Valencia","fabest@gmail.com", "3210986789");
         
@@ -67,7 +65,7 @@ public class EquipoTest {
 
     }
 
-     @Test
+    @Test
     public void inscripcionesNoAbiertas(){
 
         LOG.info("Iniciado el test de inscripcion no abierta");
