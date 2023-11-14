@@ -29,7 +29,7 @@ public class Persona {
         return nombre;
     }
     /*
-     * Metood para obtener apellido
+     * Metodo para obtener apellido
      */
     public String getApellido() {
         return apellido;

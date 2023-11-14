@@ -13,7 +13,8 @@ public class Jugador extends Persona{
     public Jugador(String nombre, String apellido, String email, String numeroCelular, LocalDate fechaNacimiento, GeneroJugador generoJugador) {
         super(nombre, apellido, email, numeroCelular);
         
-        assert generoJugador!= null;
+        assert fechaNacimiento!= null : "La fecha de nacimiento es requerida";
+        assert generoJugador!= null : "El genero del jugador es requerido";
 
         this.fechaNacimiento = fechaNacimiento;
         this.generoJugador = generoJugador;
