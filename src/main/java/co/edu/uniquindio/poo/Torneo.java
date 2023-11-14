@@ -28,13 +28,13 @@ public class Torneo{
                         LocalDate fechaCierreInscripciones, byte numeroParticipantes, byte limiteEdad,
                         int valorInscripcion, TipoTorneo tipoTorneo, GeneroTorneo generoTorneo) {
 
-                assert nombre != null;
+                assert nombre != null : "El nombre del torneo es requerido";
                 setFechaInicio(fechaInicio);
                 setFechaInicioInscripciones(fechaInicioInscripciones);
                 assert fechaCierreInscripciones != null;
-                assert numeroParticipantes >= (byte) 0;
-                assert limiteEdad >= (byte)0;
-                assert valorInscripcion >= 0;
+                assert numeroParticipantes >= (byte) 0 : "El numero de participantes no puede ser negativo";
+                assert limiteEdad >= (byte)0 : "El limite de edad no puede ser negativo";
+                assert valorInscripcion >= 0 : "El valor de la inscripcion no puede ser negativa";
                 assert fechaInicio.isAfter(fechaInicioInscripciones) && fechaInicio.isAfter(fechaCierreInscripciones);
                 assert fechaCierreInscripciones.isAfter(fechaInicioInscripciones);
                 
@@ -105,7 +105,7 @@ public class Torneo{
          * Metodo para fecha inicio
          */
         public void setFechaInicio(LocalDate fechaInicio) {
-                assert fechaInicio != null;
+                assert fechaInicio != null : "La fecha de inicio del torneo es requerida";
                 assert (fechaInicioInscripciones == null || fechaInicio.isAfter(fechaInicioInscripciones))&&
                 (fechaCierreInscripciones == null || fechaInicio.isAfter(fechaCierreInscripciones));
                 
@@ -228,7 +228,7 @@ public class Torneo{
          */
         private void validarLimiteEdadJugador(Jugador jugador) {
                 var edadAInicioTorneo = jugador.calcularEdad(fechaInicio);
-                assert limiteEdad == 0 || limiteEdad >= edadAInicioTorneo : "No se pueden regitrar jugadores que excedan el limite de edad del torneo";
+                assert limiteEdad == 0 || limiteEdad >= edadAInicioTorneo : "No se pueden registrar jugadores que excedan el limite de edad del torneo";
         }
 
         /*

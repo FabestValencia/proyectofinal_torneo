@@ -10,6 +10,13 @@ public class Persona {
      * Creacion del objeto persona
      */
     public Persona(String nombre, String apellido, String email, String numeroCelular) {
+
+
+        assert (nombre != null && !nombre.isBlank()):  "El nombre es requerido";
+        assert (apellido != null && !apellido.isBlank()) : "El apellido es requerido";
+        assert (email != null && !email.isBlank()) : "El email es requerido";
+        assert (numeroCelular != null && !numeroCelular.isBlank()) : "El nombre es requerido";
+
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
