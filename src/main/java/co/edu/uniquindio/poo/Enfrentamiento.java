@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Enfrentamiento {
     private String nombreLugar;
-    private String direccioLugar;
+    private String direccionLugar;
     private LocalDate fecha;
     private LocalDate hora;
     private byte resultado;
@@ -12,10 +12,10 @@ public class Enfrentamiento {
     /*
      * Creación del metodo enfrentamiento 
      */
-    public Enfrentamiento(String nombreLugar, String direccioLugar, LocalDate fecha, LocalDate hora, byte resultado,
+    public Enfrentamiento(String nombreLugar, String direccionLugar, LocalDate fecha, LocalDate hora, byte resultado,
             EstadoEnfrentamiento estadoEnfrentamiento) {
         this.nombreLugar = nombreLugar;
-        this.direccioLugar = direccioLugar;
+        this.direccionLugar = direccionLugar;
         this.fecha = fecha;
         this.hora = hora;
         this.resultado = resultado;
@@ -37,13 +37,13 @@ public class Enfrentamiento {
      * Metodo para obtener direccion del lugar
      */
     public String getDireccioLugar() {
-        return direccioLugar;
+        return direccionLugar;
     }
     /*
      * Metodo para cambiar direccion del lugar
      */
-    public void setDireccioLugar(String direccioLugar) {
-        this.direccioLugar = direccioLugar;
+    public void setDireccionLugar(String direccionLugar) {
+        this.direccionLugar = direccionLugar;
     }
     /*
      * Metodo para obtener fecha 
@@ -88,7 +88,7 @@ public class Enfrentamiento {
         return estadoEnfrentamiento;
     }
     /*
-     * Metodo para cmabiar el estado del enfrentamiento
+     * Metodo para cambiar el estado del enfrentamiento
      */
     public void setEstadoEnfrentamiento(EstadoEnfrentamiento estadoEnfrentamiento) {
         this.estadoEnfrentamiento = estadoEnfrentamiento;
