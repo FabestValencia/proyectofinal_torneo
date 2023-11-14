@@ -10,16 +10,17 @@ import java.util.function.Predicate;
 public class Torneo{
 
         private final String nombre;
-        private LocalDate fechaInicio; 
-        private LocalDate fechaInicioInscripciones;
-        private LocalDate fechaCierreInscripciones;
         private final byte numeroParticipantes;
         private final byte limiteEdad;
+        private LocalDate fechaInicio; 
+        private LocalDate fechaInicioInscripciones;
+        private LocalDate fechaCierreInscripciones;        
         private final int valorInscripcion;
         private final TipoTorneo tipoTorneo;
-        private final Collection<Equipo> equipos;
         private final GeneroTorneo generoTorneo;
+        private final Collection<Equipo> equipos;
         private final Collection<Juez> jueces;
+       
         /*
          * Creacion del objeto torneo 
          */
@@ -50,48 +51,56 @@ public class Torneo{
                 this.generoTorneo = generoTorneo;
                 this.jueces = new LinkedList<>();
         }
+
         /*
          * Metodo para obtener nombre
          */
         public String getNombre() {
                 return nombre;
         }
+
         /*
          * Metodo para obtener fecha inicio
          */
         public LocalDate getFechaInicio() {
                 return fechaInicio;
         }
+
         /*
          * Metodo para obtener fecha de inicio inscripciones 
          */
         public LocalDate getFechaInicioInscripciones() {
                 return fechaInicioInscripciones;
         }
+
         /*
          * Metodo para obtener fecha cierre de inscripciones 
          */
         public LocalDate getFechaCierreInscripciones() {
                 return fechaCierreInscripciones;
         }
+
         /*
          * Metodo para obtener numero de participantes 
          */
         public byte getNumeroParticipantes() {
                 return numeroParticipantes;
         }
+
         /*
          * Metodo para obtener limite de edad
          */
         public byte getLimiteEdad() {
                 return limiteEdad;
         }
+
         /*
          * Metodo para obtener valor de inscipcion 
          */
         public int getValorInscripcion() {
                 return valorInscripcion;
         }
+
         /*
          * Metodo para fecha inicio
          */
@@ -102,6 +111,7 @@ public class Torneo{
                 
                 this.fechaInicio = fechaInicio;
         }
+
         /*
          * Metodo para cambiar fecha de inicio inscripciones
          */
@@ -110,30 +120,35 @@ public class Torneo{
 
                 this.fechaInicioInscripciones = fechaInicioInscripciones;
         }
+
         /*
          * Metodo para cambiar fecha de inscripiciones 
          */
         public void setFechaCierreInscripciones(LocalDate fechaCierreInscripciones) {
                 this.fechaCierreInscripciones = fechaCierreInscripciones;
         }
+
         /*
          * Meotodo para obtener tipo torneo 
          */
         public TipoTorneo getTipoTorneo() {
                 return tipoTorneo;
         }
+
         /*
          * Metodo para obtener lista de equipos 
          */
         public Collection<Equipo> getEquipos() {
                 return Collections.unmodifiableCollection(equipos);
         }
+
         /*
          * Metodo para obtener lista de jueces
          */
         public Collection<Juez> getJueces() {
                 return Collections.unmodifiableCollection(jueces);
         }
+
         /*
          * Metodo para registrar equipo 
          */
@@ -142,6 +157,7 @@ public class Torneo{
                 validarInscripcionesAbiertas();
                 equipos.add(equipo);
         }
+
         /*
          * metodo para validar suscripcion 
          */
@@ -151,6 +167,7 @@ public class Torneo{
 
                 assert inscripcionesAbiertas : "Las inscripciones no estan abiertas";
         }
+
         /*
          * Metodo para validar equipo existente
          */
@@ -159,6 +176,7 @@ public class Torneo{
                 assert !existeEquipo : "El equipo ya esta registrado";
 
         }
+
         /*
          * Metodo para buscar equipo por nombre
          */
@@ -166,6 +184,7 @@ public class Torneo{
                 Predicate<Equipo> condicion = equipo -> equipo.nombreEquipo().equals(nombreEquipo);
                 return equipos.stream().filter(condicion).findAny();
         }
+
         /*
          * Metodo para registrar jugador
          */
@@ -174,6 +193,7 @@ public class Torneo{
                 equipo.ifPresent((e) -> registrarJugador(e,jugador));
 
         }
+
         /*
          * Metodo para saber si jugador se registra despues de la fecha limite 
          */
@@ -183,6 +203,7 @@ public class Torneo{
                 validarJugadorExiste(jugador);
                 equipo.registrarJugador(jugador);
         }
+
         /*
          * Metodo para decir que ya se ha registrado este jugador
          */
@@ -190,6 +211,7 @@ public class Torneo{
                 boolean existeJugador = buscarJugador(jugador).isPresent();
                 assert !existeJugador : "El jugador ya esta registrado";
         }
+
         /*
          * Metodo para buscar un jugador
          */
@@ -200,6 +222,7 @@ public class Torneo{
                 .map(Optional::get)
                 .findAny();
         }
+
         /*
          * Metodo para validar limite de edad de un jugador
          */
@@ -207,6 +230,7 @@ public class Torneo{
                 var edadAInicioTorneo = jugador.calcularEdad(fechaInicio);
                 assert limiteEdad == 0 || limiteEdad >= edadAInicioTorneo : "No se pueden regitrar jugadores que excedan el limite de edad del torneo";
         }
+
         /*
          * Metodo para registrar juez
          */
@@ -215,6 +239,7 @@ public class Torneo{
                 validarJuezExistente(juez);
                 jueces.add(juez);
         }
+
         /*
          * Metodo para validar un juez que ya existe
          */
@@ -222,6 +247,7 @@ public class Torneo{
                 boolean existeJuez = buscarJuezPorLicencia(juez.getLicencia()).isPresent();
                 assert !existeJuez : "El juez ya esta registrado";
         }
+
         /*
          * Metodo para buscar un juez por su licencia
          */
@@ -229,6 +255,7 @@ public class Torneo{
                 Predicate<Juez> condicion = juez -> juez.getLicencia().equals(licencia);
                 return jueces.stream().filter(condicion).findAny();
         }
+        
         /*
          * Metodo para obtener genero torneo
          */

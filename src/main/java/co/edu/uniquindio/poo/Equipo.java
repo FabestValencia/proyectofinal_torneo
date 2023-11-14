@@ -13,7 +13,7 @@ public record Equipo(String nombreEquipo, Persona representante, Collection<Juga
         this(nombreEquipo, representante, new LinkedList<>());
     }
     /*
-     * Metodo para resgistrar jugador
+     * Metodo para registrar jugador
      */
     public void registrarJugador(Jugador jugador){
         validarJugadorExistente(jugador);
