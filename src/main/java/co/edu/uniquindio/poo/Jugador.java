@@ -25,13 +25,13 @@ public class Jugador extends Persona{
         return fechaNacimiento;
     }
     /*
-     * Metodo para cualcular edad
+     * Metodo para calcular edad
      */
     public byte calcularEdad(LocalDate fecha) {
         return (byte) Period.between(fechaNacimiento, fecha).getYears();
     }
     /*
-     * Metodo para generar jugador
+     * Metodo para obtener el genero del jugador
      */
     public GeneroJugador getGeneroJugador() {
         return generoJugador;
