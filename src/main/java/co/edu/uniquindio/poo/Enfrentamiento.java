@@ -1,32 +1,45 @@
 package co.edu.uniquindio.poo;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Enfrentamiento {
+
     private String nombreLugar;
     private String direccionLugar;
     private LocalDate fecha;
     private LocalDate hora;
+    private final Equipo equipo1;
+    private final Equipo equipo2;
+    private final Collection<Juez> jueces;
     private byte resultado;
     private EstadoEnfrentamiento estadoEnfrentamiento;
+    
     /*
      * Creación del metodo enfrentamiento 
      */
-    public Enfrentamiento(String nombreLugar, String direccionLugar, LocalDate fecha, LocalDate hora, byte resultado,
-            EstadoEnfrentamiento estadoEnfrentamiento) {
+    
+    public Enfrentamiento(String nombreLugar, String direccionLugar, LocalDate fecha, LocalDate hora, Equipo equipo1,
+            Equipo equipo2, Collection<Juez> jueces, byte resultado, EstadoEnfrentamiento estadoEnfrentamiento) {
         this.nombreLugar = nombreLugar;
         this.direccionLugar = direccionLugar;
         this.fecha = fecha;
         this.hora = hora;
+        this.equipo1 = equipo1;
+        this.equipo2 = equipo2;
+        this.jueces = jueces;
         this.resultado = resultado;
         this.estadoEnfrentamiento = estadoEnfrentamiento;
-    }
+    } 
+    
     /*
      * Metodo para obtener nombre del lugar
      */
     public String getNombreLugar() {
         return nombreLugar;
     }
+
     /*
      * Metodo Para cambiar nombre del lugar
      */
@@ -92,6 +105,24 @@ public class Enfrentamiento {
      */
     public void setEstadoEnfrentamiento(EstadoEnfrentamiento estadoEnfrentamiento) {
         this.estadoEnfrentamiento = estadoEnfrentamiento;
+    }
+
+    public String getDireccionLugar() {
+        return direccionLugar;
+    }
+
+    public Equipo getEquipo1() {
+        return equipo1;
+    }
+
+    public Equipo getEquipo2() {
+        return equipo2;
+    }
+
+    public Collection<Juez> getJueces() {
+        return Collections.unmodifiableCollection(jueces);
     }  
+
+    
 
 }
