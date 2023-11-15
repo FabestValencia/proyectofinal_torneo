@@ -230,7 +230,7 @@ public class Torneo{
                                 cumpleRequisito = true;
                         }
                                 break;    
-                        default:
+                        case MIXTO:
                         cumpleRequisito = true;
                                 break;
                 }
