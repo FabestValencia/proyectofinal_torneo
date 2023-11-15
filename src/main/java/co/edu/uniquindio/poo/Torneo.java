@@ -37,6 +37,8 @@ public class Torneo{
                 assert valorInscripcion >= 0 : "El valor de la inscripcion no puede ser negativa";
                 assert fechaInicio.isAfter(fechaInicioInscripciones) && fechaInicio.isAfter(fechaCierreInscripciones);
                 assert fechaCierreInscripciones.isAfter(fechaInicioInscripciones);
+                assert tipoTorneo != null : "El tipo de torneo es requerido";
+                assert generoTorneo != null : "El genero de torneo es requerido";
                 
 
                 this.nombre = nombre;
@@ -129,7 +131,7 @@ public class Torneo{
         }
 
         /*
-         * Meotodo para obtener tipo torneo 
+         * Metodo para obtener tipo torneo 
          */
         public TipoTorneo getTipoTorneo() {
                 return tipoTorneo;
@@ -195,13 +197,45 @@ public class Torneo{
         }
 
         /*
-         * Metodo para saber si jugador se registra despues de la fecha limite 
+         * Metodo para registrar un jugador directamente desde el torneo
          */
         public void registrarJugador(Equipo equipo, Jugador jugador) {
                 assert !LocalDate.now().isAfter(fechaCierreInscripciones) : "No se puede registrar jugadores despues de la fecha de cierre";
+                assert validarGeneroJugador(jugador) != false : "El genero del jugador no coincide con el genero del torneo";
                 validarLimiteEdadJugador(jugador);
                 validarJugadorExiste(jugador);
                 equipo.registrarJugador(jugador);
+        }
+
+
+        /*
+         * Valida si el genero del jugador concuerda con el genero del torneo
+         */
+        private boolean validarGeneroJugador(Jugador jugador) {
+
+                boolean cumpleRequisito = false;
+                String generoJugador = jugador.getGeneroJugador()+"";
+                String aux = generoTorneo+"";
+
+                switch (generoTorneo) {
+
+                        case MASCULINO:
+                        if(generoJugador.equals(aux)){
+                                cumpleRequisito = true;
+                        }
+                                break;
+
+                        case FEMENINO:
+                        if(generoJugador.equals(aux)){
+                                cumpleRequisito = true;
+                        }
+                                break;    
+                        default:
+                        cumpleRequisito = true;
+                                break;
+                }
+
+                return cumpleRequisito;
         }
 
         /*
@@ -224,7 +258,8 @@ public class Torneo{
         }
 
         /*
-         * Metodo para validar limite de edad de un jugador
+         * Metodo para validar
+         *  limite de edad de un jugador
          */
         private void validarLimiteEdadJugador(Jugador jugador) {
                 var edadAInicioTorneo = jugador.calcularEdad(fechaInicio);
@@ -262,8 +297,5 @@ public class Torneo{
         public GeneroTorneo getGeneroTorneo() {
                 return generoTorneo;
         }
-
-
-
-        
+    
 }

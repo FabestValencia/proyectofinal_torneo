@@ -1,6 +1,7 @@
 package co.edu.uniquindio.poo;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -8,8 +9,7 @@ public class Enfrentamiento {
 
     private String nombreLugar;
     private String direccionLugar;
-    private LocalDate fecha;
-    private LocalDate hora;
+    private LocalDateTime horaFecha;
     private final Equipo equipo1;
     private final Equipo equipo2;
     private final Collection<Juez> jueces;
@@ -20,12 +20,11 @@ public class Enfrentamiento {
      * Creación del metodo enfrentamiento 
      */
     
-    public Enfrentamiento(String nombreLugar, String direccionLugar, LocalDate fecha, LocalDate hora, Equipo equipo1,
+    public Enfrentamiento(String nombreLugar, String direccionLugar, LocalDateTime horaFecha, Equipo equipo1,
             Equipo equipo2, Collection<Juez> jueces, byte resultado, EstadoEnfrentamiento estadoEnfrentamiento) {
         this.nombreLugar = nombreLugar;
         this.direccionLugar = direccionLugar;
-        this.fecha = fecha;
-        this.hora = hora;
+        this.horaFecha = horaFecha;
         this.equipo1 = equipo1;
         this.equipo2 = equipo2;
         this.jueces = jueces;
@@ -61,27 +60,16 @@ public class Enfrentamiento {
     /*
      * Metodo para obtener fecha 
      */
-    public LocalDate getFecha() {
-        return fecha;
+    public LocalDateTime getHoraFecha() {
+        return horaFecha;
     }
     /*
      * Metodo para cambiar fecha
      */
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setHoraFecha(LocalDateTime horaFecha) {
+        this.horaFecha = horaFecha;
     }
-    /*
-     * Metodo para obtener hora
-     */
-    public LocalDate getHora() {
-        return hora;
-    }
-    /*
-     * Metodo para cambiar hora
-     */
-    public void setHora(LocalDate hora) {
-        this.hora = hora;
-    }
+    
     /*
      * Metodo para obtener resultado
      */
@@ -103,7 +91,7 @@ public class Enfrentamiento {
     /*
      * Metodo para cambiar el estado del enfrentamiento
      */
-    public void setEstadoEnfrentamiento(EstadoEnfrentamiento estadoEnfrentamiento) {
+    public void setEstadoEnfrentamiento(boolean aplazado, EstadoEnfrentamiento estadoEnfrentamiento) {
         this.estadoEnfrentamiento = estadoEnfrentamiento;
     }
 
